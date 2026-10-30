@@ -14,3 +14,25 @@ button.addEventListener("click", function( ) {
         alert(data)
     });
 });
+
+// Select the input field
+const input = document.getElementById("hero-name");
+
+button.addEventListener("click", function( ) {
+
+    // Retrieve the superhero name
+    const searchTerm = input.value.trim(); 
+    
+    const url = "superheroes.php?query=" + encodeURIComponent(searchTerm);
+    fetch(url)
+        .then(function(response) {
+            return response.text();
+    })
+
+    .then(function(data) {
+        result.innerHTML =data;
+    });
+
+});
+// Select the results container
+const result = document.getElementById("result");
